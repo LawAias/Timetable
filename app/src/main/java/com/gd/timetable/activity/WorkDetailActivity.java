@@ -73,6 +73,8 @@ public class WorkDetailActivity extends BaseCompatActivity {
 
     FloatingActionButton mFabBtn;
 
+    private ImageView iv;
+
     private ImageView mImgLogo;//课标logo
     private TextView mTxTitle;//作业标题
     private TextView mTxUpdateTime;//创建时间（以服务器数据为准）
@@ -168,6 +170,7 @@ public class WorkDetailActivity extends BaseCompatActivity {
         }
 
         //标题，logo和发布时间
+        iv = (ImageView) findViewById(R.id.iv);
         View viewTitle = mRowContainer.findViewById(R.id.row_title);
         mImgLogo = (ImageView) viewTitle.findViewById(R.id.icon);
         mTxTitle = (TextView) viewTitle.findViewById(R.id.name);
@@ -192,6 +195,8 @@ public class WorkDetailActivity extends BaseCompatActivity {
         mTxTimeTitle.setText(R.string.work_deadline_title);
         mTxDdlContent = (TextView) mViewTime.findViewById(R.id.description);
 
+
+
     }
 
     private void bindData2View() {
@@ -202,6 +207,7 @@ public class WorkDetailActivity extends BaseCompatActivity {
         typeDrawable = new IconicsDrawable(this, GoogleMaterial.Icon.gmd_event_note).color(drawColor);
 
         mImgLogo.setImageDrawable(typeDrawable);
+        iv.setImageDrawable(typeDrawable);
 
         if (dataType == 0) {
             mTxTitle.setText(R.string.input_title_hint);
@@ -213,6 +219,8 @@ public class WorkDetailActivity extends BaseCompatActivity {
         } else {
             ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(this));
             ImageLoader.getInstance().displayImage(mWorkInfo.getLogo().getUrl(), mImgLogo,
+                    PhotoUtil.normalImageOptions);
+            ImageLoader.getInstance().displayImage(mWorkInfo.getLogo().getUrl(), iv,
                     PhotoUtil.normalImageOptions);
             mTxTitle.setText(mWorkInfo.getTitle());
             SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA);
@@ -389,7 +397,6 @@ public class WorkDetailActivity extends BaseCompatActivity {
                     }
                 }).show();
     }
-
 
 
     /**
