@@ -1,0 +1,83 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:transitionName="actionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar"
+            android:layout_centerHorizontal="true"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/activity_detail_vertical_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/row_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/row_title"
+                    layout="@layout/row_detailiconview" />
+
+                <include
+                    android:id="@+id/row_course"
+                    layout="@layout/row_detailview" />
+
+                <include
+                    android:id="@+id/row_detail"
+                    layout="@layout/row_detailview" />
+
+                <include
+                    android:id="@+id/row_time"
+                    layout="@layout/row_detailview" />
+
+
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab_normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:src="@android:drawable/ic_dialog_alert"
+        app:fab_showAnimation="@anim/show_from_bottom"
+        app:fab_hideAnimation="@anim/hide_to_bottom"
+        app:fab_label="Menu item 1"
+        app:fab_colorNormal="#F50057"
+        app:fab_colorPressed="#E8004A"
+        app:fab_colorRipple="#C20024"
+        app:fab_shadowColor="#000"
+        app:fab_elevationCompat="6dp" />
+
+
+
+
+</android.support.design.widget.CoordinatorLayout>

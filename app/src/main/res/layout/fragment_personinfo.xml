@@ -1,0 +1,85 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+
+    <TextView
+        android:id="@+id/tx_avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/user_avatar"
+        android:textColor="@color/md_dark_cards"
+        android:textSize="22sp" />
+
+    <ImageView
+        android:id="@+id/img_avatar_view"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/tx_avatar"
+        android:src="@drawable/default_user_avatar" />
+
+    <TextView
+        android:id="@+id/tx_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_avatar_view"
+        android:layout_marginTop="16dp"
+        android:text="@string/app_name"
+        android:textColor="@color/md_dark_cards"
+        android:textSize="22sp" />
+
+
+    <TextView
+        android:id="@+id/tx_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tx_username"
+        android:layout_marginTop="10dp"
+        android:text="@string/app_name"
+        android:textColor="@color/md_dark_cards"
+        android:textSize="22sp" />
+
+    <ImageView
+        android:id="@+id/img_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tx_nickname"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tx_nickname"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerInside"
+        android:src="@drawable/pencil" />
+
+
+    <TextView
+        android:id="@+id/tx_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tx_nickname"
+        android:layout_marginTop="10dp"
+        android:text="@string/app_name"
+        android:textColor="@color/md_dark_cards"
+        android:textSize="22sp" />
+
+    <ImageView
+        android:id="@+id/img_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tx_phone"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tx_phone"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerInside"
+        android:src="@drawable/pencil" />
+
+
+</RelativeLayout>

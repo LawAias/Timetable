@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="photo_handle">
+        <item>拍照上传</item>
+        <item>本地照片</item>
+    </string-array>
+
+    <string-array name="work_handle">
+        <item>查看作业信息</item>
+        <item>修改作业信息</item>
+        <item>删除作业信息</item>
+    </string-array>
+
+    <string-array name="schedule_handle">
+        <item>查看课程</item>
+        <item>修改课程</item>
+        <item>删除课程</item>
+    </string-array>
+
+
+    <string-array name="order_handle_user">
+        <item>取消预约</item>
+        <item>查看我前面的人数</item>
+        <item>查看此招聘信息</item>
+    </string-array>
+
+    <string-array name="note_handle">
+        <item>查看笔记</item>
+        <item>修改笔记</item>
+        <item>删除笔记</item>
+    </string-array>
+
+    <array name="custom_colors">
+        <item>#F44336</item>
+        <item>#E91E63</item>
+        <item>#9C27B0</item>
+        <item>#673AB7</item>
+        <item>#3F51B5</item>
+        <item>#2196F3</item>
+    </array>
+
+</resources>
