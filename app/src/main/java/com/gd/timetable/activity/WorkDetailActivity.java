@@ -18,6 +18,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
@@ -73,7 +74,6 @@ public class WorkDetailActivity extends BaseCompatActivity {
 
     FloatingActionButton mFabBtn;
 
-    private ImageView iv;
 
     private ImageView mImgLogo;//课标logo
     private TextView mTxTitle;//作业标题
@@ -170,7 +170,6 @@ public class WorkDetailActivity extends BaseCompatActivity {
         }
 
         //标题，logo和发布时间
-        iv = (ImageView) findViewById(R.id.iv);
         View viewTitle = mRowContainer.findViewById(R.id.row_title);
         mImgLogo = (ImageView) viewTitle.findViewById(R.id.icon);
         mTxTitle = (TextView) viewTitle.findViewById(R.id.name);
@@ -195,8 +194,18 @@ public class WorkDetailActivity extends BaseCompatActivity {
         mTxTimeTitle.setText(R.string.work_deadline_title);
         mTxDdlContent = (TextView) mViewTime.findViewById(R.id.description);
 
-
-
+        viewTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!TextUtils.isEmpty(mWorkInfo.getLogo().getUrl())) {
+                    Intent intent = new Intent(WorkDetailActivity.this, ImageActivity.class);
+                    Bundle b = new Bundle();
+                    b.putString("url", mWorkInfo.getLogo().getUrl());
+                    intent.putExtras(b);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     private void bindData2View() {
@@ -207,7 +216,7 @@ public class WorkDetailActivity extends BaseCompatActivity {
         typeDrawable = new IconicsDrawable(this, GoogleMaterial.Icon.gmd_event_note).color(drawColor);
 
         mImgLogo.setImageDrawable(typeDrawable);
-        iv.setImageDrawable(typeDrawable);
+//        iv.setImageDrawable(typeDrawable);
 
         if (dataType == 0) {
             mTxTitle.setText(R.string.input_title_hint);
@@ -220,8 +229,9 @@ public class WorkDetailActivity extends BaseCompatActivity {
             ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(this));
             ImageLoader.getInstance().displayImage(mWorkInfo.getLogo().getUrl(), mImgLogo,
                     PhotoUtil.normalImageOptions);
-            ImageLoader.getInstance().displayImage(mWorkInfo.getLogo().getUrl(), iv,
-                    PhotoUtil.normalImageOptions);
+            Log.i("sihuan", mWorkInfo.getLogo().getUrl());
+            //            ImageLoader.getInstance().displayImage(mWorkInfo.getLogo().getUrl(), iv,
+            //                    PhotoUtil.normalImageOptions);
             mTxTitle.setText(mWorkInfo.getTitle());
             SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA);
             mTxUpdateTime.setText(getString(R.string.update_time, time.format(mWorkInfo.getUpdatedAt())));

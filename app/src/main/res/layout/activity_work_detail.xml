@@ -54,11 +54,6 @@
                     android:id="@+id/row_time"
                     layout="@layout/row_detailview" />
 
-                <ImageView
-                    android:id="@+id/iv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
             </LinearLayout>
         </ScrollView>
     </RelativeLayout>

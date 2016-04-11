@@ -50,6 +50,8 @@
 
         <activity
             android:name=".activity.ScheduleDetailActivity"></activity>
+        <activity
+            android:name=".activity.ImageActivity"></activity>
 
         <activity
             android:name=".activity.AlarmActivity"
