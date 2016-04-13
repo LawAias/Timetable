@@ -14,9 +14,6 @@ import com.gd.timetable.fragment.LoginRegFragment;
 
 /**
  * 登陆界面: 包括登陆、注册、找回密码等子界面
- * 
- * @author sjy
- * 
  */
 public class LoginActivity extends FragmentActivity implements BaseSwitchFragment.FragmentCallBack {
 

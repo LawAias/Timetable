@@ -1,6 +1,7 @@
 package com.gd.timetable.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -39,6 +40,7 @@ import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
 public class MenuActivity extends BaseCompatActivity {
 
@@ -47,6 +49,7 @@ public class MenuActivity extends BaseCompatActivity {
     //save our header or result
     private Drawer result = null;
 
+    IProfile profile;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,17 +66,21 @@ public class MenuActivity extends BaseCompatActivity {
         AccountHeader headerResult;
 
 
-
-        IProfile profile;
-
-        if(getUserInfo().getType().equals("0")){
+        if (getUserInfo().getType().equals("0")) {
             //普通用户
             profile = new ProfileDrawerItem().withName("学生用户:" + mApp.getUserInfo().getUserName());
-            if(TextUtils.isEmpty(getUserInfo().getAvatarUrl())){
+            if (TextUtils.isEmpty(getUserInfo().getAvatarUrl())) {
                 profile.withIcon(R.drawable.default_user_avatar);
-            }else{
-                LogTrace.d(TAG,"avatar","url:"+getUserInfo().getAvatarUrl());
-                profile.withIcon(ImageLoader.getInstance().loadImageSync(getUserInfo().getAvatarUrl()));
+            } else {
+                LogTrace.d(TAG, "avatar", "url:" + getUserInfo().getAvatarUrl());
+//                profile.withIcon(ImageLoader.getInstance().loadImageSync(getUserInfo().getAvatarUrl()));
+                ImageLoader.getInstance().loadImage(getUserInfo().getAvatarUrl(), new SimpleImageLoadingListener() {
+                    @Override
+                    public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+                        super.onLoadingComplete(imageUri, view, loadedImage);
+                        profile.withIcon(loadedImage);
+                    }
+                });
             }
             // Create the AccountHeader
             headerResult = new AccountHeaderBuilder()
@@ -95,7 +102,7 @@ public class MenuActivity extends BaseCompatActivity {
                             new PrimaryDrawerItem().withName(R.string.drawer_personal).withIcon(FontAwesome.Icon.faw_info).withIdentifier(6),
                             new PrimaryDrawerItem().withName(R.string.drawer_modify_pwd).withIcon(FontAwesome.Icon.faw_eye).withIdentifier(7),
                             new PrimaryDrawerItem().withName(R.string.drawer_answer_pwd).withIcon(FontAwesome.Icon.faw_question).withIdentifier(3),
-            new PrimaryDrawerItem().withName(R.string.drawer_app_about).withIcon(FontAwesome.Icon.faw_star).withIdentifier(8),
+                            new PrimaryDrawerItem().withName(R.string.drawer_app_about).withIcon(FontAwesome.Icon.faw_star).withIdentifier(8),
                             new PrimaryDrawerItem().withName(R.string.drawer_item_loginout).withIcon(FontAwesome.Icon.faw_sign_out).withIdentifier(9)
                     ).withOnDrawerItemClickListener(mOnDrawerItemClickListener)
                     .withSavedInstance(savedInstanceState)
@@ -103,14 +110,21 @@ public class MenuActivity extends BaseCompatActivity {
                     .build();
 
 
-        }else{
+        } else {
             //管理者
             profile = new ProfileDrawerItem().withName("教师用户:" + mApp.getUserInfo().getUserName());
-            if(TextUtils.isEmpty(getUserInfo().getAvatarUrl())){
+            if (TextUtils.isEmpty(getUserInfo().getAvatarUrl())) {
                 profile.withIcon(R.drawable.default_user_avatar);
-            }else{
-                LogTrace.d(TAG,"avatar","url:"+getUserInfo().getAvatarUrl());
-                profile.withIcon(ImageLoader.getInstance().loadImageSync(getUserInfo().getAvatarUrl()));
+            } else {
+                LogTrace.d(TAG, "avatar", "url:" + getUserInfo().getAvatarUrl());
+//                profile.withIcon(ImageLoader.getInstance().loadImageSync(getUserInfo().getAvatarUrl()));
+                ImageLoader.getInstance().loadImage(getUserInfo().getAvatarUrl(), new SimpleImageLoadingListener() {
+                    @Override
+                    public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+                        super.onLoadingComplete(imageUri, view, loadedImage);
+                        profile.withIcon(loadedImage);
+                    }
+                });
             }
 
             // Create the AccountHeader
@@ -225,6 +239,7 @@ public class MenuActivity extends BaseCompatActivity {
      * 退出间隔
      */
     private static final int INTERVAL = 2000;
+
     /**
      * 判断两次返回时间间隔,小于两秒则退出程序
      */
@@ -311,6 +326,7 @@ public class MenuActivity extends BaseCompatActivity {
 
     /**
      * 跳转到详情界面
+     *
      * @param info
      * @param dataType
      */
