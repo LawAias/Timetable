@@ -238,5 +238,4 @@ public class WorkFragment extends BaseSwitchFragment implements WorkAdapter.OnRe
         });
     }
 
-
 }
