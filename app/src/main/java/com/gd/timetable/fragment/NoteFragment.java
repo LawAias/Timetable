@@ -38,7 +38,6 @@ import anim.CustomItemAnimator;
 /**
  * 笔记页面
  *
- * @author sjy
  */
 public class NoteFragment extends BaseSwitchFragment implements NoteAdapter.OnNoteItemClick {
 

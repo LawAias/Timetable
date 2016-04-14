@@ -25,7 +25,6 @@ import com.gd.timetable.util.LogTrace;
 /**
  * 注册界面
  *
- * @author sjy
  */
 public class LoginRegFragment extends BaseSwitchFragment implements
         OnClickListener {

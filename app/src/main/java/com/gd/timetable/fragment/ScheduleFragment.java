@@ -41,7 +41,6 @@ import anim.CustomItemAnimator;
 /**
  * 日程页面
  *
- * @author sjy
  */
 public class ScheduleFragment extends BaseSwitchFragment implements ScheduleAdapter.OnScheduleClick{
 

@@ -28,7 +28,6 @@ import com.gd.timetable.util.SingleToast;
 import com.github.clans.fab.FloatingActionButton;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
@@ -46,7 +45,6 @@ public class NoteDetailActivity extends AppCompatActivity {
     private CoordinatorLayout mCoordinatorLayout;
     Toolbar toolbar;
 
-    public static ImageLoader imageLoader = ImageLoader.getInstance();
 
     private NoteInfo mNoteInfo = null;
     //传输过来的数据处理类型

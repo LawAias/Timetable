@@ -37,7 +37,6 @@ import com.gd.timetable.util.SingleToast;
 /**
  * 登录界面
  *
- * @author sjy
  */
 public class LoginFragment extends BaseSwitchFragment implements OnClickListener {
 

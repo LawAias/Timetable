@@ -15,6 +15,9 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.gd.timetable.R;
 import com.gd.timetable.base.BaseCompatActivity;
 import com.gd.timetable.bean.NoteInfo;
@@ -39,8 +42,6 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
 public class MenuActivity extends BaseCompatActivity {
 
@@ -50,6 +51,7 @@ public class MenuActivity extends BaseCompatActivity {
     private Drawer result = null;
 
     IProfile profile;
+    AccountHeader headerResult;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,7 +65,6 @@ public class MenuActivity extends BaseCompatActivity {
 
 
         PrimaryDrawerItem orderItem;
-        final AccountHeader headerResult;
 
 
         if (getUserInfo().getType().equals("0")) {
@@ -81,14 +82,7 @@ public class MenuActivity extends BaseCompatActivity {
             } else {
                 LogTrace.d(TAG, "avatar", "url:" + getUserInfo().getAvatarUrl());
 //                profile.withIcon(ImageLoader.getInstance().loadImageSync(getUserInfo().getAvatarUrl()));
-                ImageLoader.getInstance().loadImage(getUserInfo().getAvatarUrl(), new SimpleImageLoadingListener() {
-                    @Override
-                    public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-                        super.onLoadingComplete(imageUri, view, loadedImage);
-                        profile.withIcon(loadedImage);
-                        headerResult.updateProfile(profile);
-                    }
-                });
+                setIcon(getUserInfo().getAvatarUrl());
             }
             result = new DrawerBuilder(this)
                     //this layout have to contain child layouts
@@ -127,14 +121,7 @@ public class MenuActivity extends BaseCompatActivity {
             } else {
                 LogTrace.d(TAG, "avatar", "url:" + getUserInfo().getAvatarUrl());
 //                profile.withIcon(ImageLoader.getInstance().loadImageSync(getUserInfo().getAvatarUrl()));
-                ImageLoader.getInstance().loadImage(getUserInfo().getAvatarUrl(), new SimpleImageLoadingListener() {
-                    @Override
-                    public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-                        super.onLoadingComplete(imageUri, view, loadedImage);
-                        profile.withIcon(loadedImage);
-                        headerResult.updateProfile(profile);
-                    }
-                });
+                setIcon(getUserInfo().getAvatarUrl());
             }
 
             //Create the drawer
@@ -339,6 +326,20 @@ public class MenuActivity extends BaseCompatActivity {
         intent.putExtra(C.INTENT_TYPE.DATA_DATATYPE, dataType);
         intent.putExtra(C.INTENT_TYPE.DATA_OBJ, info);
         startActivity(intent);
+    }
+
+    /**
+     * 设置头像
+     */
+
+    public void setIcon(String url) {
+        Glide.with(this).load(url).asBitmap().into(new SimpleTarget<Bitmap>() {
+            @Override
+            public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                profile.withIcon(resource);
+                headerResult.updateProfile(profile);
+            }
+        });
     }
 
 }

@@ -17,7 +17,6 @@ import com.gd.timetable.util.SingleToast;
 
 /**
  * 修改密码页面
- * @author sjy
  *
  */
 public class PwdModifyFragment extends BaseSwitchFragment {

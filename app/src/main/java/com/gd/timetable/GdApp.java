@@ -16,9 +16,6 @@ import com.gd.timetable.bean.UserInfo;
 import com.gd.timetable.bean.WorkInfo;
 import com.gd.timetable.db.DBProvider;
 import com.gd.timetable.service.AVService;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,8 +25,6 @@ import java.util.List;
 
 /**
  * 应用的入口 注册服务器信息
- * 
- * @author sjy
  * 
  */
 public class GdApp extends Application {
@@ -86,7 +81,7 @@ public class GdApp extends Application {
 		AVObject.registerSubclass(NoteInfo.class);
 
 		refCurrUser();
-		initImageLoader(GdApp.this);
+//		initImageLoader(GdApp.this);
 
 		// 设置默认打开的 Activity
 		PushService.setDefaultPushCallback(this, LoginActivity.class);
@@ -96,19 +91,19 @@ public class GdApp extends Application {
 	}
 
 
-	/**
-	 * 初始化ImageLoader
-	 */
-	public static void initImageLoader(Context context) {
-		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
-				context)
-				.threadPoolSize(3).threadPriority(Thread.NORM_PRIORITY - 2)
-						//.memoryCache(new WeakMemoryCache())
-				.denyCacheImageMultipleSizesInMemory()
-				.tasksProcessingOrder(QueueProcessingType.LIFO)
-				.build();
-		ImageLoader.getInstance().init(config);
-	}
+//	/**
+//	 * 初始化ImageLoader
+//	 */
+//	public static void initImageLoader(Context context) {
+//		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
+//				context)
+//				.threadPoolSize(3).threadPriority(Thread.NORM_PRIORITY - 2)
+//						//.memoryCache(new WeakMemoryCache())
+//				.denyCacheImageMultipleSizesInMemory()
+//				.tasksProcessingOrder(QueueProcessingType.LIFO)
+//				.build();
+//		ImageLoader.getInstance().init(config);
+//	}
 
 
 	/**

@@ -8,11 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.gd.timetable.R;
 import com.gd.timetable.bean.WorkInfo;
-import com.gd.timetable.util.PhotoUtil;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -28,13 +26,13 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder> {
 
     OnRecItemClick mOnRecItemClick;
 
-    private static ImageLoader imageLoader = ImageLoader.getInstance();
 
     /**
      * 回调接口，点击了哪个item
      */
     public interface OnRecItemClick {
         void OnClickRecItem(WorkInfo mWorkInfo, View animView);
+
         void OnLongClickRecItem(WorkInfo mWorkInfo, View animView);
     }
 
@@ -73,19 +71,20 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder> {
     public void onBindViewHolder(final ViewHolder viewHolder, int i) {
         final WorkInfo mWorkInfo = mWorkInfoList.get(i);
 
-        imageLoader.init(ImageLoaderConfiguration.createDefault(mAct));
-        imageLoader.displayImage(mWorkInfo.getLogo().getUrl(), viewHolder.image,
-                PhotoUtil.normalImageOptions);
+//        imageLoader.init(ImageLoaderConfiguration.createDefault(mAct));
+//        imageLoader.displayImage(mWorkInfo.getLogo().getUrl(), viewHolder.image,
+//                PhotoUtil.normalImageOptions);
+        Glide.with(mAct).load(mWorkInfo.getLogo().getUrl()).into(viewHolder.image);
 
         viewHolder.name.setText(mWorkInfo.getTitle());
 
         SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA);
-        viewHolder.time.setText( mAct.getString(R.string.update_time,time.format(mWorkInfo.getUpdatedAt())));
+        viewHolder.time.setText(mAct.getString(R.string.update_time, time.format(mWorkInfo.getUpdatedAt())));
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mOnRecItemClick !=null){
+                if (mOnRecItemClick != null) {
                     mOnRecItemClick.OnClickRecItem(mWorkInfo, viewHolder.image);
                 }
             }
@@ -94,7 +93,7 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder> {
         viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                if(mOnRecItemClick !=null){
+                if (mOnRecItemClick != null) {
                     mOnRecItemClick.OnLongClickRecItem(mWorkInfo, viewHolder.image);
                 }
                 return true;

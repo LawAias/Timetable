@@ -38,7 +38,6 @@ import anim.CustomItemAnimator;
 /**
  * 作业信息页面
  *
- * @author sjy
  */
 public class WorkFragment extends BaseSwitchFragment implements WorkAdapter.OnRecItemClick {
 

@@ -20,7 +20,6 @@ import com.gd.timetable.util.SingleToast;
 
 /**
  * 忘记密码界面
- * @author sjy
  *
  */
 public class LoginFgtPwdFragment extends BaseSwitchFragment implements

@@ -19,7 +19,6 @@ import com.gd.timetable.util.SingleToast;
 /**
  * 根据密保问题
  * 修改密码页面
- * @author sjy
  *
  */
 public class PwdAnswerFragment extends BaseSwitchFragment {

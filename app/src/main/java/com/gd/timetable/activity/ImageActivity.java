@@ -5,20 +5,23 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.gd.timetable.GdApp;
 import com.gd.timetable.R;
 import com.gd.timetable.util.PhotoUtil;
 import com.gd.timetable.util.SingleToast;
-import com.nostra13.universalimageloader.core.ImageLoader;
+
+import uk.co.senab.photoview.PhotoView;
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
  * Created by aa on 2016/4/8.
  */
 public class ImageActivity extends Activity {
 
-    private ImageView iv;
+    private PhotoView iv;
+    private PhotoViewAttacher photoViewAttacher;
     private Button save;
     private String url;
 
@@ -31,8 +34,10 @@ public class ImageActivity extends Activity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             url = bundle.getString("url");
-            ImageLoader.getInstance().displayImage(url, iv,
-                    PhotoUtil.normalImageOptions);
+//            ImageLoader.getInstance().displayImage(url, iv,
+//                    PhotoUtil.normalImageOptions);
+            Glide.with(this).load(url).into(iv);
+            photoViewAttacher = new PhotoViewAttacher(iv,true);
         }
 
 
@@ -53,7 +58,7 @@ public class ImageActivity extends Activity {
     }
 
     private void findViews() {
-        iv = (ImageView) findViewById(R.id.iv);
+        iv = (PhotoView) findViewById(R.id.iv);
         save = (Button) findViewById(R.id.save);
     }
 

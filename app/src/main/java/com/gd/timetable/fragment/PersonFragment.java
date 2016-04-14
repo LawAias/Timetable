@@ -21,6 +21,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.SaveCallback;
+import com.bumptech.glide.Glide;
 import com.gd.timetable.R;
 import com.gd.timetable.base.BaseSwitchFragment;
 import com.gd.timetable.bean.UserInfo;
@@ -29,7 +30,6 @@ import com.gd.timetable.util.C;
 import com.gd.timetable.util.LogTrace;
 import com.gd.timetable.util.PhotoUtil;
 import com.gd.timetable.util.SingleToast;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -40,7 +40,6 @@ import java.util.UUID;
 /**
  * 用户信息页面
  *
- * @author sjy
  */
 public class PersonFragment extends BaseSwitchFragment implements OnClickListener {
 
@@ -93,7 +92,8 @@ public class PersonFragment extends BaseSwitchFragment implements OnClickListene
         mTxPhone.setText(String.format(getString(R.string.account_phone),
                 mUserInfo.getPhone()));
 
-        ImageLoader.getInstance().displayImage(mUserInfo.getAvatarUrl(), mImgAvatar, PhotoUtil.normalImageOptions);
+//        ImageLoader.getInstance().displayImage(mUserInfo.getAvatarUrl(), mImgAvatar, PhotoUtil.normalImageOptions);
+        Glide.with(this).load(mUserInfo.getAvatarUrl()).into(mImgAvatar);
         return rootView;
     }
 

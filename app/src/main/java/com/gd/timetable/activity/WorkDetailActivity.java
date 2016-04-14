@@ -30,19 +30,17 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.SaveCallback;
+import com.bumptech.glide.Glide;
 import com.codetroopers.betterpickers.calendardatepicker.CalendarDatePickerDialogFragment;
 import com.gd.timetable.R;
 import com.gd.timetable.base.BaseCompatActivity;
 import com.gd.timetable.bean.WorkInfo;
 import com.gd.timetable.util.ActivityForResultUtil;
 import com.gd.timetable.util.C;
-import com.gd.timetable.util.PhotoUtil;
 import com.gd.timetable.util.SingleToast;
 import com.github.clans.fab.FloatingActionButton;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -66,7 +64,6 @@ public class WorkDetailActivity extends BaseCompatActivity {
     private CoordinatorLayout mCoordinatorLayout;
     Toolbar toolbar;
 
-    public static ImageLoader imageLoader = ImageLoader.getInstance();
 
     private WorkInfo mWorkInfo = null;
     //传输过来的数据处理类型
@@ -226,9 +223,10 @@ public class WorkDetailActivity extends BaseCompatActivity {
             mTxWorkDetail.setText("");
             mTxDdlContent.setText("");
         } else {
-            ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(this));
-            ImageLoader.getInstance().displayImage(mWorkInfo.getLogo().getUrl(), mImgLogo,
-                    PhotoUtil.normalImageOptions);
+//            ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(this));
+//            ImageLoader.getInstance().displayImage(mWorkInfo.getLogo().getUrl(), mImgLogo,
+//                    PhotoUtil.normalImageOptions);
+            Glide.with(this).load(mWorkInfo.getLogo().getUrl()).into(mImgLogo);
             Log.i("sihuan", mWorkInfo.getLogo().getUrl());
             //            ImageLoader.getInstance().displayImage(mWorkInfo.getLogo().getUrl(), iv,
             //                    PhotoUtil.normalImageOptions);

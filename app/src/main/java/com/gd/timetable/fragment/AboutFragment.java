@@ -11,7 +11,6 @@ import com.gd.timetable.R;
 
 /**
  * 关于页面
- * @author sjy
  *
  */
 public class AboutFragment extends Fragment {
