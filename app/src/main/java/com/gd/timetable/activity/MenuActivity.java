@@ -63,12 +63,19 @@ public class MenuActivity extends BaseCompatActivity {
 
 
         PrimaryDrawerItem orderItem;
-        AccountHeader headerResult;
+        final AccountHeader headerResult;
 
 
         if (getUserInfo().getType().equals("0")) {
             //普通用户
             profile = new ProfileDrawerItem().withName("学生用户:" + mApp.getUserInfo().getUserName());
+
+            // Create the AccountHeader
+            headerResult = new AccountHeaderBuilder()
+                    .withActivity(this)
+                    .withHeaderBackground(R.drawable.header)
+                    .addProfiles(profile)
+                    .build();
             if (TextUtils.isEmpty(getUserInfo().getAvatarUrl())) {
                 profile.withIcon(R.drawable.default_user_avatar);
             } else {
@@ -79,15 +86,10 @@ public class MenuActivity extends BaseCompatActivity {
                     public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
                         super.onLoadingComplete(imageUri, view, loadedImage);
                         profile.withIcon(loadedImage);
+                        headerResult.updateProfile(profile);
                     }
                 });
             }
-            // Create the AccountHeader
-            headerResult = new AccountHeaderBuilder()
-                    .withActivity(this)
-                    .withHeaderBackground(R.drawable.header)
-                    .addProfiles(profile)
-                    .build();
             result = new DrawerBuilder(this)
                     //this layout have to contain child layouts
                     .withRootView(R.id.drawer_container)
@@ -113,6 +115,13 @@ public class MenuActivity extends BaseCompatActivity {
         } else {
             //管理者
             profile = new ProfileDrawerItem().withName("教师用户:" + mApp.getUserInfo().getUserName());
+
+            // Create the AccountHeader
+            headerResult = new AccountHeaderBuilder()
+                    .withActivity(this)
+                    .withHeaderBackground(R.drawable.header)
+                    .addProfiles(profile)
+                    .build();
             if (TextUtils.isEmpty(getUserInfo().getAvatarUrl())) {
                 profile.withIcon(R.drawable.default_user_avatar);
             } else {
@@ -123,16 +132,11 @@ public class MenuActivity extends BaseCompatActivity {
                     public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
                         super.onLoadingComplete(imageUri, view, loadedImage);
                         profile.withIcon(loadedImage);
+                        headerResult.updateProfile(profile);
                     }
                 });
             }
 
-            // Create the AccountHeader
-            headerResult = new AccountHeaderBuilder()
-                    .withActivity(this)
-                    .withHeaderBackground(R.drawable.header)
-                    .addProfiles(profile)
-                    .build();
             //Create the drawer
             result = new DrawerBuilder(this)
                     //this layout have to contain child layouts
