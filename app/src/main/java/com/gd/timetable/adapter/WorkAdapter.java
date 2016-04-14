@@ -55,6 +55,12 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder> {
         }
     }
 
+    public void addData(List list){
+        mWorkInfoList= list;
+        notifyDataSetChanged();
+    }
+
+
     public void addInfos(List<WorkInfo> list) {
         int nowLast = this.mWorkInfoList.size();
         this.mWorkInfoList.addAll(list);

@@ -37,6 +37,7 @@ import com.gd.timetable.base.BaseCompatActivity;
 import com.gd.timetable.bean.WorkInfo;
 import com.gd.timetable.util.ActivityForResultUtil;
 import com.gd.timetable.util.C;
+import com.gd.timetable.util.PhotoUtil;
 import com.gd.timetable.util.SingleToast;
 import com.github.clans.fab.FloatingActionButton;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
@@ -498,9 +499,8 @@ public class WorkDetailActivity extends BaseCompatActivity {
                                 .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
                         if (cursor.getCount() > 0 && cursor.moveToFirst()) {
                             mPhotoPath = cursor.getString(column_index);
-                            mPhotoBitmap = BitmapFactory.decodeFile(mPhotoPath);
+                            mPhotoBitmap = BitmapFactory.decodeFile(mPhotoPath, PhotoUtil.getBitmapOptions());
                             mImgLogo.setImageBitmap(mPhotoBitmap);
-
                             try {
                                 AVFile picFile = AVFile.withAbsoluteLocalPath(C.AVFILE_NAME.PIC, mPhotoPath);
                                 mWorkInfo.setLogo(picFile);
@@ -509,6 +509,7 @@ public class WorkDetailActivity extends BaseCompatActivity {
                             }
 
                         }
+
                     }
                 } else {
                     Toast.makeText(this, R.string.pic_data_error, Toast.LENGTH_SHORT).show();
@@ -526,7 +527,7 @@ public class WorkDetailActivity extends BaseCompatActivity {
 
 
     /**
-     * 上传招聘信息
+     * 上传信息
      */
     private void upLoadInfo() {
         if (TextUtils.isEmpty(mWorkInfo.getTitle())) {

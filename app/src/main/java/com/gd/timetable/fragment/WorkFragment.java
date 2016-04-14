@@ -210,7 +210,7 @@ public class WorkFragment extends BaseSwitchFragment implements WorkAdapter.OnRe
         query.setLimit(10);
         //跳过已有的数据
         LogTrace.d(TAG, "doQryRelative", "mApp.getWorkInfoList().size():" + mApp.getWorkInfoList().size());
-        query.skip(mApp.getWorkInfoList().size());
+//        query.skip(mApp.getWorkInfoList().size());
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
@@ -218,14 +218,15 @@ public class WorkFragment extends BaseSwitchFragment implements WorkAdapter.OnRe
                     // 查询出错，没有拿到数据
                     SingleToast.showToast(mApp, "查询失败:" + e.getMessage(), 2000);
                 } else {
-                    // 当前用户喜欢的所有 物品 都保存在 list 里面了.
                     if (list != null && list.size() > 0) {
                         for (AVObject info : list) {
-                            WorkInfo workInfo = (WorkInfo) info;
-                            LogTrace.d(TAG,"doQryRelative","workInfo:"+ workInfo.getTitle());
-                            mApp.getWorkInfoList().add(workInfo);
+//                            WorkInfo workInfo = (WorkInfo) info;
+//                            LogTrace.d(TAG,"doQryRelative","workInfo:"+ workInfo.getTitle());
+//                            mApp.getWorkInfoList().add(workInfo);
+                            mApp.setmWorkList(list);
                         }
-                        mAdapter.notifyDataSetChanged();
+//                        mAdapter.notifyDataSetChanged();
+                        mAdapter.addData(mApp.getWorkInfoList());
 
                     } else {
                         SingleToast.showToast(mApp, R.string.data_no_more, 2000);

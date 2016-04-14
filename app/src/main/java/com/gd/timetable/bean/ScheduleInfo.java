@@ -5,9 +5,9 @@ import android.os.Parcelable;
 
 /**
  * 课程信息（存储在本地数据库）
- * 
+ *
  * @author Harlan
- * 
+ *
  */
 public class ScheduleInfo implements Parcelable{
 

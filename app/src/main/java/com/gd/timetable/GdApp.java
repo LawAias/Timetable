@@ -26,6 +26,8 @@ import java.util.List;
 /**
  * 应用的入口 注册服务器信息
  * 
+ * @author sjy
+ *
  */
 public class GdApp extends Application {
 
@@ -50,9 +52,11 @@ public class GdApp extends Application {
 	 */
 	List<ScheduleInfo> mScheduleList = new ArrayList<>();
 
+    public void setmWorkList(List mWorkList) {
+        this.mWorkList = mWorkList;
+    }
 
-
-	public List<WorkInfo> getWorkInfoList() {
+    public List<WorkInfo> getWorkInfoList() {
 		return mWorkList;
 	}
 

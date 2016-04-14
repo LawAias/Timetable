@@ -588,6 +588,15 @@ public class PhotoUtil {
         return newPath;
     }
 
+
+    public static BitmapFactory.Options getBitmapOptions() {
+        BitmapFactory.Options opt = new BitmapFactory.Options();
+        opt.inPreferredConfig = Bitmap.Config.RGB_565;
+        opt.inPurgeable = true;
+        opt.inInputShareable = true;
+        return opt;
+    }
+
 //    public static void displayImageCacheElseNetwork(ImageView imageView,
 //                                                    String path, String url) {
 //        ImageLoader imageLoader = ImageLoader.getInstance();
