@@ -191,9 +191,9 @@ public class WorkDetailActivity extends BaseCompatActivity {
         mTxTimeTitle.setText(R.string.work_deadline_title);
         mTxDdlContent = (TextView) mViewTime.findViewById(R.id.description);
 
-        viewTitle.setOnClickListener(new View.OnClickListener() {
+        viewTitle.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onLongClick(View v) {
                 if (!TextUtils.isEmpty(mWorkInfo.getLogo().getUrl())) {
                     Intent intent = new Intent(WorkDetailActivity.this, ImageActivity.class);
                     Bundle b = new Bundle();
@@ -201,6 +201,7 @@ public class WorkDetailActivity extends BaseCompatActivity {
                     intent.putExtras(b);
                     startActivity(intent);
                 }
+                return true;
             }
         });
     }
