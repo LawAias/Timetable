@@ -130,7 +130,7 @@ public class ScheduleFragment extends BaseSwitchFragment implements ScheduleAdap
                 .getScheduleFromDB(dateStr);
 
         if(infos.isEmpty()){
-            //没有数据，把服务器的课程数据更新成今天的(额，虽然这样有点不合理--！)
+            //没有数据，把服务器的课程数据更新
             List<ScheduleInfo> allInfos = DBProvider.getInstance(getActivity())
                     .getScheduleFromDB();
             AlarmManager mAlarmManager = (AlarmManager) mAct.getSystemService(Context.ALARM_SERVICE);

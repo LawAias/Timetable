@@ -31,8 +31,9 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     /**
      * 回调接口，点击了哪个item
      */
-    public interface OnNoteItemClick{
+    public interface OnNoteItemClick {
         void OnClickNoteItem(NoteInfo mNoteInfo, View animView);
+
         void OnLongClickNoteItem(NoteInfo mNoteInfo, View animView);
     }
 
@@ -45,6 +46,11 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         colorAccent = mAct.getResources().getColor(R.color.primary);
     }
 
+
+    public void setData(List list) {
+        this.mNoteInfoList = list;
+        notifyDataSetChanged();
+    }
 
     public void clearAll() {
         int size = this.mNoteInfoList.size();
@@ -85,7 +91,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mOnNoteItemClick!=null){
+                if (mOnNoteItemClick != null) {
                     mOnNoteItemClick.OnClickNoteItem(mNoteInfo, viewHolder.image);
                 }
             }
@@ -94,7 +100,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                if(mOnNoteItemClick!=null){
+                if (mOnNoteItemClick != null) {
                     mOnNoteItemClick.OnLongClickNoteItem(mNoteInfo, viewHolder.image);
                 }
                 return true;

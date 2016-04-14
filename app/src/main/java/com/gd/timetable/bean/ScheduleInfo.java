@@ -3,125 +3,142 @@ package com.gd.timetable.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * 课程信息（存储在本地数据库）
  *
  * @author Harlan
- *
  */
-public class ScheduleInfo implements Parcelable{
+public class ScheduleInfo implements Parcelable {
 
-	private String id;//uuid 唯一索引
+    private String id;//uuid 唯一索引
 
-	private String name;//课程名称
+    private String name;//课程名称
 
-	private String place;//上课地点
+    private String place;//上课地点
 
-	private String teacher;//任课教师
+    private String teacher;//任课教师
 
-	private String content;//课程内容
+    private String content;//课程内容
 
-	private String time;//课程时间（HH:MM）
+    private String time;//课程时间（HH:MM）
 
-	private String date;//课程日期
+    private String date;//课程日期
 
-	public String getId() {
-		return id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getContent() {
-		return content;
-	}
+    public String getContent() {
+        return content;
+    }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-	public String getTime() {
-		return time;
-	}
+    public String getTime() {
+        return time;
+    }
 
-	public void setTime(String time) {
-		this.time = time;
-	}
+    public void setTime(String time) {
+        this.time = time;
+    }
 
-	public String getPlace() {
-		return place;
-	}
+    public String getPlace() {
+        return place;
+    }
 
-	public void setPlace(String place) {
-		this.place = place;
-	}
+    public void setPlace(String place) {
+        this.place = place;
+    }
 
-	public String getTeacher() {
-		return teacher;
-	}
+    public String getTeacher() {
+        return teacher;
+    }
 
-	public void setTeacher(String teacher) {
-		this.teacher = teacher;
-	}
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
+    }
 
-	public String getDate() {
-		return date;
-	}
+    public String getDate() {
+        return date;
+    }
 
-	public void setDate(String date) {
-		this.date = date;
-	}
+    public void setDate(String date) {
+        this.date = date;
+    }
 
-	public ScheduleInfo(){
+    public void setDate() {
+        Date date = null;
+        try {
+            date = (new SimpleDateFormat("yyyy-MM-dd")).parse(getDate());
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            cal.add(Calendar.DATE, 7);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
-	}
+    }
 
-	protected ScheduleInfo(Parcel in) {
-		id = in.readString();
-		name = in.readString();
-		place = in.readString();
-		teacher = in.readString();
-		content = in.readString();
-		time = in.readString();
-		date = in.readString();
+    public ScheduleInfo() {
 
-	}
+    }
 
-	@Override
-	public int describeContents() {
-		return 0;
-	}
+    protected ScheduleInfo(Parcel in) {
+        id = in.readString();
+        name = in.readString();
+        place = in.readString();
+        teacher = in.readString();
+        content = in.readString();
+        time = in.readString();
+        date = in.readString();
 
-	@Override
-	public void writeToParcel(Parcel dest, int flags) {
-		dest.writeString(id);
-		dest.writeString(name);
-		dest.writeString(place);
-		dest.writeString(teacher);
-		dest.writeString(content);
-		dest.writeString(time);
-		dest.writeString(date);
+    }
 
-	}
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
-	public static final Creator<ScheduleInfo> CREATOR = new Creator<ScheduleInfo>() {
-		@Override
-		public ScheduleInfo createFromParcel(Parcel in) {
-			return new ScheduleInfo(in);
-		}
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(name);
+        dest.writeString(place);
+        dest.writeString(teacher);
+        dest.writeString(content);
+        dest.writeString(time);
+        dest.writeString(date);
 
-		@Override
-		public ScheduleInfo[] newArray(int size) {
-			return new ScheduleInfo[size];
-		}
-	};
+    }
+
+    public static final Creator<ScheduleInfo> CREATOR = new Creator<ScheduleInfo>() {
+        @Override
+        public ScheduleInfo createFromParcel(Parcel in) {
+            return new ScheduleInfo(in);
+        }
+
+        @Override
+        public ScheduleInfo[] newArray(int size) {
+            return new ScheduleInfo[size];
+        }
+    };
 }

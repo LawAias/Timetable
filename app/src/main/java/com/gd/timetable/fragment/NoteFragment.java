@@ -37,7 +37,6 @@ import anim.CustomItemAnimator;
 
 /**
  * 笔记页面
- *
  */
 public class NoteFragment extends BaseSwitchFragment implements NoteAdapter.OnNoteItemClick {
 
@@ -192,7 +191,6 @@ public class NoteFragment extends BaseSwitchFragment implements NoteAdapter.OnNo
     }
 
 
-
     /**
      * 获取服务器数据
      */
@@ -202,7 +200,7 @@ public class NoteFragment extends BaseSwitchFragment implements NoteAdapter.OnNo
         query.include("note_user");
         //跳过已有的数据
         LogTrace.d(TAG, "doRefreshSchedule", "mApp.getNoteList().size():" + mApp.getNoteList().size());
-        query.skip(mApp.getNoteList().size());
+//        query.skip(mApp.getNoteList().size());
         //每次刷新十条
         query.setLimit(10);
         query.addAscendingOrder("updatedAt");
@@ -215,12 +213,14 @@ public class NoteFragment extends BaseSwitchFragment implements NoteAdapter.OnNo
                 } else {
                     // 当前用户喜欢的所有 物品 都保存在 list 里面了.
                     if (list != null && list.size() > 0) {
-                        for (AVObject info : list) {
-                            NoteInfo noteInfo = (NoteInfo) info;
-                            LogTrace.d(TAG,"doRefreshSchedule","noteInfo:"+noteInfo.getTitle());
-                            mApp.getNoteList().add(noteInfo);
-                        }
-                        mAdapter.notifyDataSetChanged();
+//                        for (AVObject info : list) {
+//                            NoteInfo noteInfo = (NoteInfo) info;
+//                            LogTrace.d(TAG,"doRefreshSchedule","noteInfo:"+noteInfo.getTitle());
+//                            mApp.getNoteList().add(noteInfo);
+//                        }
+                        mApp.setmNoteList(list);
+                        mAdapter.setData(list);
+//                        mAdapter.notifyDataSetChanged();
 
                     } else {
                         SingleToast.showToast(mApp, R.string.data_no_more, 2000);

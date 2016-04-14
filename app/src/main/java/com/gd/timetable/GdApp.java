@@ -25,74 +25,77 @@ import java.util.List;
 
 /**
  * 应用的入口 注册服务器信息
- * 
- * @author sjy
  *
+ * @author sjy
  */
 public class GdApp extends Application {
 
-	private static final String TAG = GdApp.class.getSimpleName();
+    private static final String TAG = GdApp.class.getSimpleName();
 
-	private AVUser currentUser;
-	private String userId;
-	private String userName;
-	private UserInfo userInfo = null;
+    private AVUser currentUser;
+    private String userId;
+    private String userName;
+    private UserInfo userInfo = null;
 
-	public static Context ctx;
+    public static Context ctx;
 
-	/**
-	 * 缓存部分数据
-	 */
-	List<WorkInfo> mWorkList = new ArrayList<>();
+    /**
+     * 缓存部分数据
+     */
+    List<WorkInfo> mWorkList = new ArrayList<>();
 
-	List<NoteInfo> mNoteList= new ArrayList<>();
+    List<NoteInfo> mNoteList = new ArrayList<>();
 
-	/**
-	 * 缓存部分数据
-	 */
-	List<ScheduleInfo> mScheduleList = new ArrayList<>();
+    /**
+     * 缓存部分数据
+     */
+    List<ScheduleInfo> mScheduleList = new ArrayList<>();
 
     public void setmWorkList(List mWorkList) {
         this.mWorkList = mWorkList;
     }
 
     public List<WorkInfo> getWorkInfoList() {
-		return mWorkList;
-	}
+        return mWorkList;
+    }
 
-	public List<NoteInfo> getNoteList() {
-		return mNoteList;
-	}
+    public void setmNoteList(List mNoteList) {
+        this.mNoteList = mNoteList;
+    }
 
-	public List<ScheduleInfo> getScheduleList() {
-		return mScheduleList;
-	}
+    public List<NoteInfo> getNoteList() {
+        return mNoteList;
+    }
+
+    public List<ScheduleInfo> getScheduleList() {
+        return mScheduleList;
+    }
 
 
-	@Override
-	public void onCreate() {
-		super.onCreate();
-		ctx = GdApp.this;
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        ctx = GdApp.this;
 
-		// U need your AVOS key and so on to run the code.
-		AVOSCloud.initialize(this,
-				"NMbegCLLk2P2utrK8Rf84clJ-gzGzoHsz",
-				"fGT4SLch3roePlJ8BJovIja5");
+        // U need your AVOS key and so on to run the code.
+        AVOSCloud.initialize(this,
+                "NMbegCLLk2P2utrK8Rf84clJ-gzGzoHsz",
+                "fGT4SLch3roePlJ8BJovIja5");
 
-		// 注册子类
-		AVObject.registerSubclass(UserInfo.class);
-		AVObject.registerSubclass(WorkInfo.class);
-		AVObject.registerSubclass(NoteInfo.class);
+        // 注册子类
+        AVObject.registerSubclass(UserInfo.class);
+        AVObject.registerSubclass(WorkInfo.class);
+        AVObject.registerSubclass(NoteInfo.class);
 
-		refCurrUser();
+        refCurrUser();
 //		initImageLoader(GdApp.this);
 
-		// 设置默认打开的 Activity
-		PushService.setDefaultPushCallback(this, LoginActivity.class);
-		// 订阅频道，当该频道消息到来的时候，打开对应的 Activity
-		PushService.subscribe(this, "public", LoginActivity.class);
+        // 设置默认打开的 Activity
+        PushService.setDefaultPushCallback(this, LoginActivity.class);
+        // 订阅频道，当该频道消息到来的时候，打开对应的 Activity
+        PushService.subscribe(this, "public", LoginActivity.class);
 
-	}
+    }
 
 
 //	/**
@@ -110,104 +113,104 @@ public class GdApp extends Application {
 //	}
 
 
-	/**
-	 * 更新当前用户信息
-	 */
-	public void refCurrUser() {
-		currentUser = AVUser.getCurrentUser();
-		if (currentUser != null) {
-			userId = currentUser.getObjectId();
-			userName = currentUser.getUsername();
-			new getUserInfoTask().execute(userName);
-		}
-	}
+    /**
+     * 更新当前用户信息
+     */
+    public void refCurrUser() {
+        currentUser = AVUser.getCurrentUser();
+        if (currentUser != null) {
+            userId = currentUser.getObjectId();
+            userName = currentUser.getUsername();
+            new getUserInfoTask().execute(userName);
+        }
+    }
 
-	public AVUser getAVUser() {
-		return currentUser;
-	}
-	
-	public void setAVUser(AVUser avuser) {
-		 currentUser = avuser ;
-		 userId = currentUser.getObjectId();
-		 userName = currentUser.getUsername();
-	}
+    public AVUser getAVUser() {
+        return currentUser;
+    }
 
-	/**
-	 * 获取用户账号ObjectId
-	 * 
-	 * @return
-	 */
-	public String getUserId() {
-		return userId;
-	}
+    public void setAVUser(AVUser avuser) {
+        currentUser = avuser;
+        userId = currentUser.getObjectId();
+        userName = currentUser.getUsername();
+    }
 
-	/**
-	 * 获取用户名
-	 * 
-	 * @return
-	 */
-	public String getUserName() {
-		return userName;
-	}
+    /**
+     * 获取用户账号ObjectId
+     *
+     * @return
+     */
+    public String getUserId() {
+        return userId;
+    }
 
-	/**
-	 * 获取用户账号名字
-	 * 
-	 * @return
-	 */
-	public UserInfo getUserInfo() {
-		return userInfo;
-	}
+    /**
+     * 获取用户名
+     *
+     * @return
+     */
+    public String getUserName() {
+        return userName;
+    }
 
-	public void setUserInfo(UserInfo info,AVUser avuser) {
-		userInfo = info;
-		setAVUser(avuser);
-	}
+    /**
+     * 获取用户账号名字
+     *
+     * @return
+     */
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
 
-	// 远程获取用户数据
-	private class getUserInfoTask extends AsyncTask<String, Void, UserInfo> {
-		@Override
-		protected UserInfo doInBackground(String... params) {
-			UserInfo info = AVService.getUserInfo(params[0]);
-			return info;
-		}
+    public void setUserInfo(UserInfo info, AVUser avuser) {
+        userInfo = info;
+        setAVUser(avuser);
+    }
 
-		@Override
-		protected void onPreExecute() {
-			super.onPreExecute();
-		}
+    // 远程获取用户数据
+    private class getUserInfoTask extends AsyncTask<String, Void, UserInfo> {
+        @Override
+        protected UserInfo doInBackground(String... params) {
+            UserInfo info = AVService.getUserInfo(params[0]);
+            return info;
+        }
 
-		@Override
-		protected void onProgressUpdate(Void... values) {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
 
-			super.onProgressUpdate(values);
-		}
+        @Override
+        protected void onProgressUpdate(Void... values) {
 
-		@Override
-		protected void onPostExecute(UserInfo info) {
-			// 说明认证成功,则校验账号格式是否正确
-			if (info != null) {
-				userInfo = info;
-				setUserInfo(info, AVUser.getCurrentUser());
-			} else {
-				// 说明认证失败
-			}
-		}
-	}
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(UserInfo info) {
+            // 说明认证成功,则校验账号格式是否正确
+            if (info != null) {
+                userInfo = info;
+                setUserInfo(info, AVUser.getCurrentUser());
+            } else {
+                // 说明认证失败
+            }
+        }
+    }
 
 
-	/**
-	 * 从数据库重新获取数据
-	 */
-	public void doRefreshSchedule() {
-		Date dateDay = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
-		String dateStr = sdf.format(dateDay);
-		List<ScheduleInfo> infos = DBProvider.getInstance(this)
-				.getScheduleFromDB(dateStr);
-		getScheduleList().clear();
-		getScheduleList().addAll(infos);
-	}
+    /**
+     * 从数据库重新获取数据
+     */
+    public void doRefreshSchedule() {
+        Date dateDay = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+        String dateStr = sdf.format(dateDay);
+        List<ScheduleInfo> infos = DBProvider.getInstance(this)
+                .getScheduleFromDB(dateStr);
+        getScheduleList().clear();
+        getScheduleList().addAll(infos);
+    }
 
 
 }
