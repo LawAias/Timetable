@@ -28,7 +28,7 @@
     <string name="diary_file_empty">多媒体笔记附件不能为空</string>
 
 
-    <string name="drawer_timetable">今日课程</string>
+    <string name="drawer_timetable">我的课程</string>
     <string name="drawer_user_job">课程作业</string>
     <string name="drawer_user_note">我的笔记</string>
 

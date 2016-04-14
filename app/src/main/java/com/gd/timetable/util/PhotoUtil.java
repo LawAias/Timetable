@@ -17,9 +17,9 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.gd.timetable.R;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+//import com.nostra13.universalimageloader.core.DisplayImageOptions;
+//import com.nostra13.universalimageloader.core.ImageLoader;
+//import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -245,17 +245,17 @@ public class PhotoUtil {
     }
 
 
-    @SuppressWarnings("deprecation")
-    public static DisplayImageOptions normalImageOptions = new DisplayImageOptions.Builder()
-            .showImageOnLoading(R.drawable.ic_stub)
-            .showImageForEmptyUri(R.drawable.ic_empty)
-            .showImageOnFail(R.drawable.ic_error).cacheInMemory(true)
-            .cacheOnDisc(true).considerExifParams(true)
-            .imageScaleType(ImageScaleType.EXACTLY)
-            .bitmapConfig(Config.RGB_565).resetViewBeforeLoading(true)// 设置图片在下载前是否重置，复位
-            // .displayer(new RoundedBitmapDisplayer(20))
-            // .displayer(new FadeInBitmapDisplayer(100))// 淡入
-            .build();
+//    @SuppressWarnings("deprecation")
+//    public static DisplayImageOptions normalImageOptions = new DisplayImageOptions.Builder()
+//            .showImageOnLoading(R.drawable.ic_stub)
+//            .showImageForEmptyUri(R.drawable.ic_empty)
+//            .showImageOnFail(R.drawable.ic_error).cacheInMemory(true)
+//            .cacheOnDisc(true).considerExifParams(true)
+//            .imageScaleType(ImageScaleType.EXACTLY)
+//            .bitmapConfig(Config.RGB_565).resetViewBeforeLoading(true)// 设置图片在下载前是否重置，复位
+//            // .displayer(new RoundedBitmapDisplayer(20))
+//            // .displayer(new FadeInBitmapDisplayer(100))// 淡入
+//            .build();
 
     /**
      * 回收垃圾 recycle
@@ -588,17 +588,17 @@ public class PhotoUtil {
         return newPath;
     }
 
-    public static void displayImageCacheElseNetwork(ImageView imageView,
-                                                    String path, String url) {
-        ImageLoader imageLoader = ImageLoader.getInstance();
-        if (path != null) {
-            File file = new File(path);
-            if (file.exists()) {
-                imageLoader.displayImage("file://" + path, imageView,
-                        normalImageOptions);
-                return;
-            }
-        }
-        imageLoader.displayImage(url, imageView, normalImageOptions);
-    }
+//    public static void displayImageCacheElseNetwork(ImageView imageView,
+//                                                    String path, String url) {
+//        ImageLoader imageLoader = ImageLoader.getInstance();
+//        if (path != null) {
+//            File file = new File(path);
+//            if (file.exists()) {
+//                imageLoader.displayImage("file://" + path, imageView,
+//                        normalImageOptions);
+//                return;
+//            }
+//        }
+//        imageLoader.displayImage(url, imageView, normalImageOptions);
+//    }
 }

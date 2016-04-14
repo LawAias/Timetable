@@ -158,7 +158,7 @@ public class MenuActivity extends BaseCompatActivity {
 
             switch ((int) drawerItem.getIdentifier()) {
                 case 0:
-                    //今日课表（本地数据库）
+                    //我的课程（本地数据库）
                     getSupportActionBar().setTitle(R.string.drawer_timetable);
                     changeFragment(ScheduleFragment.getInstance());
                     break;

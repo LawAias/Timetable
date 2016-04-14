@@ -51,13 +51,6 @@
         <dex dex="G:\BaiduYunDownload\Timetable\app\build\intermediates\pre-dexed\debug\okhttp-2.6.0-leancloud_d4185a93168b348cfe52dac45d9adf52fd32ca69.jar" />
     </item>
     <item
-        jar="G:\BaiduYunDownload\Timetable\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="3be474b1b21b31cf2fa93fe6bd641ae108d96452">
-        <dex dex="G:\BaiduYunDownload\Timetable\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.2.1_840dd7cfbc1f9d5fe595fa913b2593b93a4e9fd5.jar" />
-    </item>
-    <item
         jar="G:\BaiduYunDownload\Timetable\app\build\intermediates\exploded-aar\cn.leancloud.android\avoscloud-push\v3.12.3\jars\classes.jar"
         jumboMode="false"
         revision="23.0.2"
@@ -65,11 +58,11 @@
         <dex dex="G:\BaiduYunDownload\Timetable\app\build\intermediates\pre-dexed\debug\cn.leancloud.android-avoscloud-push-v3.12.3_19b28701001ebbf8f306d0f7fd93d20b841b5879.jar" />
     </item>
     <item
-        jar="C:\Users\aa\.gradle\caches\modules-2\files-2.1\com.nostra13.universalimageloader\universal-image-loader\1.9.5\442dbfb517b9ab5cb5c6da7ebf8cc28ec5bd0375\universal-image-loader-1.9.5.jar"
+        jar="G:\BaiduYunDownload\Timetable\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\jars\classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="442dbfb517b9ab5cb5c6da7ebf8cc28ec5bd0375">
-        <dex dex="G:\BaiduYunDownload\Timetable\app\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.5_e919b994bb5f605e713196d2f52e56f642109916.jar" />
+        sha1="3be474b1b21b31cf2fa93fe6bd641ae108d96452">
+        <dex dex="G:\BaiduYunDownload\Timetable\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.2.1_840dd7cfbc1f9d5fe595fa913b2593b93a4e9fd5.jar" />
     </item>
     <item
         jar="C:\Users\aa\.gradle\caches\modules-2\files-2.1\com.facebook.rebound\rebound\0.3.8\c8b90640dddaf1e7ad75d7cb00b09a44b3788f7e\rebound-0.3.8.jar"
@@ -128,18 +121,18 @@
         <dex dex="G:\BaiduYunDownload\Timetable\app\build\intermediates\pre-dexed\debug\Java-WebSocket-1.3.1-leancloud_94042e4adaa76cf2b4109c9b698e1f638ebe275e.jar" />
     </item>
     <item
-        jar="C:\Users\aa\.gradle\caches\modules-2\files-2.1\cn.leancloud.android\okio\1.6.0-leancloud\7086c00a30a6de0ee3b963ec2c3702d37f1de11d\okio-1.6.0-leancloud.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="7086c00a30a6de0ee3b963ec2c3702d37f1de11d">
-        <dex dex="G:\BaiduYunDownload\Timetable\app\build\intermediates\pre-dexed\debug\okio-1.6.0-leancloud_0485b8a91df7927997cfc93a557b4f5b63337324.jar" />
-    </item>
-    <item
         jar="C:\Users\aa\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.7.0\9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4\glide-3.7.0.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
         <dex dex="G:\BaiduYunDownload\Timetable\app\build\intermediates\pre-dexed\debug\glide-3.7.0_988d79d22c1893d4b2e405ccb646a3ea9dd4144e.jar" />
+    </item>
+    <item
+        jar="C:\Users\aa\.gradle\caches\modules-2\files-2.1\cn.leancloud.android\okio\1.6.0-leancloud\7086c00a30a6de0ee3b963ec2c3702d37f1de11d\okio-1.6.0-leancloud.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="7086c00a30a6de0ee3b963ec2c3702d37f1de11d">
+        <dex dex="G:\BaiduYunDownload\Timetable\app\build\intermediates\pre-dexed\debug\okio-1.6.0-leancloud_0485b8a91df7927997cfc93a557b4f5b63337324.jar" />
     </item>
     <item
         jar="G:\BaiduYunDownload\Timetable\app\build\intermediates\exploded-aar\me.zhanghai.android.materialprogressbar\library\1.1.4\jars\classes.jar"
@@ -191,18 +184,18 @@
         <dex dex="G:\BaiduYunDownload\Timetable\app\build\intermediates\pre-dexed\debug\com.mikepenz-google-material-typeface-2.1.0.1.original_ac3235080ef4c713ea764d10e25124019f3d08b2.jar" />
     </item>
     <item
-        jar="G:\BaiduYunDownload\Timetable\app\build\intermediates\exploded-aar\com.commit451\PhotoView\1.2.5\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="526e8a982e8d1453c548b8d3a63968ee61667a15">
-        <dex dex="G:\BaiduYunDownload\Timetable\app\build\intermediates\pre-dexed\debug\com.commit451-PhotoView-1.2.5_e16508bfb04957dadea968f83eeaa901c240b0f7.jar" />
-    </item>
-    <item
         jar="C:\Users\aa\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
         <dex dex="G:\BaiduYunDownload\Timetable\app\build\intermediates\pre-dexed\debug\library-2.4.0_8b45e84074782cf8a18eb3274f31977ae255dd35.jar" />
+    </item>
+    <item
+        jar="G:\BaiduYunDownload\Timetable\app\build\intermediates\exploded-aar\com.commit451\PhotoView\1.2.5\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="526e8a982e8d1453c548b8d3a63968ee61667a15">
+        <dex dex="G:\BaiduYunDownload\Timetable\app\build\intermediates\pre-dexed\debug\com.commit451-PhotoView-1.2.5_e16508bfb04957dadea968f83eeaa901c240b0f7.jar" />
     </item>
     <item
         jar="G:\BaiduYunDownload\Timetable\app\build\intermediates\exploded-aar\com.mikepenz\materialdrawer\5.0.5\jars\classes.jar"
